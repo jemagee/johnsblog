@@ -7,10 +7,29 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<% flash.each do |message| %>
-  <%= message %>
-<% end %>
-<%= yield %>
-
+  <nav class="navbar navbar-inverse">
+    <div class="container">
+      <div class="navbar-header">
+        <%= link_to "MageeWorld", root_path, class: "navbar-brand" %>
+      </div>
+      <ul class= "nav navbar-nav">
+        <li><a href="#">Computer</a></li>
+        <li><a href="#">Geek</a></li>
+        <li><a href="#">Sports</a></li>
+        <li><a href="#">Food</a></li>
+        <li><a href="#">Leisure</a></li>
+      </ul>
+      <div class="navbar-right">
+        <p class="navbar-text">
+          <%= Time.new.strftime("%m/%d/%y") %>
+        </p>
+      </div>
+  </nav>
+  <div class="container">
+    <% flash.each do |key, message| %>
+      <%= message %>
+    <% end %>
+    <%= yield %>
+  </div>
 </body>
 </html>
