@@ -7,7 +7,7 @@ class Article < ActiveRecord::Base
   private
 
 
-  def publishable?
+  def published?
     status == "published"
   end
 end
