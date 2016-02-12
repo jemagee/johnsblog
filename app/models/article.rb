@@ -1,13 +1,13 @@
 class Article < ActiveRecord::Base
 
   validates :title, presence: true
-  validates :abstract, presence: true, on: :update, if: :publishable?
+  validates :abstract, presence: true, on: :update, if: Proc.new {|a| a.status == "published"}
 
 
   private
 
 
   def publishable?
-    changed.include?("status") && status == "published"
+    status == "published"
   end
 end
