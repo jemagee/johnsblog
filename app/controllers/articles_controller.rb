@@ -44,8 +44,7 @@ class ArticlesController < ApplicationController
   end
 
   def publish
-    @article.status = "published"
-    @article.save
+    @article.update_attributes(status: "published")
     flash[:success] = "Your article has been published"
     redirect_to @article
   end
