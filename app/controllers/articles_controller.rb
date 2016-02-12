@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
 
-  before_action :get_article, only: [:show, :edit, :update, :destroy]
+  before_action :get_article, only: [:show, :edit, :update, :destroy, :publish]
 
   def index
     @articles = Article.all
@@ -41,6 +41,13 @@ class ArticlesController < ApplicationController
     @article.destroy
     flash[:success] = "Your article was deleted"
     redirect_to articles_path
+  end
+
+  def publish
+    @article.status = "published"
+    @article.save
+    flash[:success] = "Your article has been published"
+    redirect_to @article
   end
 
   private

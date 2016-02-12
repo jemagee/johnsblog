@@ -3,4 +3,7 @@ show.html.erb
 <%= @article.body %>
 Status: <%= @article.status.upcase %>
 <%= link_to "Edit Article", edit_article_path(@article) %>
+<% if @article.status.downcase == "draft" %>
+  <%= link_to "Publish Article", publish_article_path(@article) %>
+<% end %>
 <%= link_to "Delete Article", article_path(@article), method: :delete, data: { confirm: "Are you sure you want to delete this article" } %> 
