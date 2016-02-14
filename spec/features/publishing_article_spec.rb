@@ -23,4 +23,14 @@ RSpec.feature "Publishing an article" do
     expect(page).to have_content("Status: DRAFT")
     expect(page).to have_link ("Publish Article")
   end
+
+  scenario "Article can not be published with a blank body" do
+    article.update_attribute(:body, "")
+    visit article_path(article)
+    click_link "Publish Article"
+
+    expect(page).to have_content("Your article has not been published")
+    expect(page).to have_content("Status: DRAFT")
+    expect(page).to have_link("Publish Article")
+  end
 end
