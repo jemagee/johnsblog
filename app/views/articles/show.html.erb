@@ -2,8 +2,10 @@
 
 
 <%= @article.title %>
+Category: <%= @article.category.name %>
 <%= @article.body %>
 Status: <%= @article.status.upcase %>
+Abstract: <%= @article.abstract %>
 <%= link_to "Edit Article", edit_article_path(@article) %>
 <% if @article.status.downcase == "draft" %>
   <%= link_to "Publish Article", publish_article_path(@article) %>
