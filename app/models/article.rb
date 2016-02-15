@@ -1,4 +1,5 @@
 class Article < ActiveRecord::Base
+  belongs_to :category
 
   validates :title, presence: true
  # validates :abstract, presence: true, on: :update, if: Proc.new {|a| a.status == "published"}
@@ -7,6 +8,7 @@ class Article < ActiveRecord::Base
     article.validates :abstract, presence: true
     article.validates :body, presence: true
   end
+
 
 
 

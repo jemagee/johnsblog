@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+categories = ["Computer", "Geek", "Food", "Sports", "Entertainment"]
+
+categories.each do |category|
+  unless Category.exists?(name: category)
+    Category.create(name: category)
+  end
+end
