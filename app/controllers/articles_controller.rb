@@ -46,10 +46,11 @@ class ArticlesController < ApplicationController
   def publish
     if @article.update_attributes(status: "published")
       flash[:success] = "Your article has been published"
+      redirect_to @article
     else
       flash[:warning] = "Your article has not been published"
+      redirect_to @article
     end
-    redirect_to @article
   end
 
   private
