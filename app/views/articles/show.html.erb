@@ -1,13 +1,23 @@
+<h1 class="page-header">
+  <%= @article.title %>
+</h1>
 
+<h3>
+  Category: <%= @article.category.name %>
+</h3>
 
+<div class="abstract">
+  Abstract: <%= @article.abstract %>
+</div>
 
-<%= @article.title %>
-Category: <%= @article.category.name %>
-<%= @article.body %>
-Status: <%= @article.status.upcase %>
-Abstract: <%= @article.abstract %>
-<%= link_to "Edit Article", edit_article_path(@article) %>
-<% if @article.status.downcase == "draft" %>
-  <%= link_to "Publish Article", publish_article_path(@article) %>
-<% end %>
-<%= link_to "Delete Article", article_path(@article), method: :delete, data: { confirm: "Are you sure you want to delete this article" } %> 
+<div class="article-body">
+  <h4>Article Body</h4>
+  <%= @article.body %>
+</div>
+<div class="btn-group">
+  <%= link_to "Edit Article", edit_article_path(@article), class: "btn btn-success" %>
+  <% if @article.status.downcase == "draft" %>
+    <%= link_to "Publish Article", publish_article_path(@article), class: "btn btn-info" %>
+  <% end %>
+  <%= link_to "Delete Article", article_path(@article), method: :delete, data: { confirm: "Are you sure you want to delete this article" }, class: "btn btn-danger" %> 
+</div>
