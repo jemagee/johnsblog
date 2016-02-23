@@ -1,0 +1,9 @@
+<%= form_for [@article, @comment] do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :body, "Comment" %>
+  <%= f.text_field :body %>
+
+  <%= f.submit class: "btn btn-warning" %>
+<% end %>
