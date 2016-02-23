@@ -1,12 +1,13 @@
 class CommentsController < ApplicationController
 
+  before_action :get_article
+  before_action :get_comment, only: [:edit, :update, :destroy]
+
   def new
-    @article = Article.find(params[:article_id])
     @comment = @article.comments.build
   end
 
   def create
-    @article = Article.find(params[:article_id])
     @comment = @article.comments.build(comment_params)
     @comment.save
     flash[:success] = "Your comment has been created"
@@ -14,21 +15,15 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    @article = Article.find(params[:article_id])
-    @comment = @article.comments.find(params[:id])
   end
 
   def update
-    @article = Article.find(params[:article_id])
-    @comment = @article.comments.find(params[:id])
     @comment.update_attributes(comment_params)
     flash[:success] = "Your comment has been updated"
     redirect_to @article
   end
 
   def destroy 
-    @article = Article.find(params[:article_id])
-    @comment = @article.comments.find(params[:id])
     @comment.destroy
     flash[:success] = "Comment has been deleted"
     redirect_to @article
@@ -38,5 +33,13 @@ class CommentsController < ApplicationController
 
     def comment_params
       params.require(:comment).permit(:title, :body)
+    end
+
+    def get_article
+      @article = Article.find(params[:article_id])
+    end
+
+    def get_comment
+      @comment = @article.comments.find(params[:id])
     end
 end
