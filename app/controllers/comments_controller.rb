@@ -9,9 +9,13 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @article.comments.build(comment_params)
-    @comment.save
-    flash[:success] = "Your comment has been created"
-    redirect_to @article
+    if @comment.save
+      flash[:success] = "Your comment has been created"
+      redirect_to @article
+    else
+      flash.now[:danger] = "Your comment has not been created"
+      render 'new'
+    end
   end
 
   def edit
