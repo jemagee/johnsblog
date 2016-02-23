@@ -1,5 +1,6 @@
 class Article < ActiveRecord::Base
   belongs_to :category
+  has_many :comments
 
   validates :title, presence: true
  # validates :abstract, presence: true, on: :update, if: Proc.new {|a| a.status == "published"}

@@ -47,10 +47,9 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-
-  group :test do
-    gem 'capybara', '~>2.4'
-    gem 'factory_girl_rails'
-    gem 'shoulda-matchers', '~> 3.1'
-  end
+end
+group :test do
+  gem 'capybara', '~>2.4'
+  gem 'factory_girl_rails'
+  gem 'shoulda-matchers', '~> 3.1'
 end
