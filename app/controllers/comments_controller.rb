@@ -26,6 +26,14 @@ class CommentsController < ApplicationController
     redirect_to @article
   end
 
+  def destroy 
+    @article = Article.find(params[:article_id])
+    @comment = @article.comments.find(params[:id])
+    @comment.destroy
+    flash[:success] = "Comment has been deleted"
+    redirect_to @article
+  end
+
   private
 
     def comment_params
