@@ -1,3 +1,8 @@
+<% if @article.errors.any? %>
+  <% @article.errors.full_messages.each do |msg| %>
+    <%= msg %>
+  <% end %>
+<% end %>
 <h1 class="page-header">
   <%= @article.title %>
 </h1>

@@ -20,8 +20,8 @@ RSpec.feature "Publishing an article" do
     click_link "Publish Article"
 
     expect(page).to have_content("Your article has not been published")
+    expect(page).to have_content("A published article must have an abstract")
     expect(page).to have_content("Status: DRAFT")
-    expect(page).to have_link ("Publish Article")
   end
 
   scenario "Article can not be published with a blank body" do
@@ -29,8 +29,7 @@ RSpec.feature "Publishing an article" do
     visit article_path(article)
     click_link "Publish Article"
 
-    expect(page).to have_content("Your article has not been published")
+    expect(page).to have_content("A published article must have some content")
     expect(page).to have_content("Status: DRAFT")
-    expect(page).to have_link("Publish Article")
   end
 end

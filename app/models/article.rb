@@ -6,8 +6,8 @@ class Article < ActiveRecord::Base
  # validates :abstract, presence: true, on: :update, if: Proc.new {|a| a.status == "published"}
  # validates :body, presence: true, on: :update, if: Proc.new { |a| a.status == "published" }
   with_options if: Proc.new { |a| a.status == "published" }, on: :update do |article|
-    article.validates :abstract, presence: true
-    article.validates :body, presence: true
+    article.validates :abstract, presence:  { message:  'A published article must have an abstract' }
+    article.validates :body, presence: { message: "A published article must have some content" }
   end
 
 

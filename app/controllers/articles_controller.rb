@@ -49,7 +49,8 @@ class ArticlesController < ApplicationController
       redirect_to @article
     else
       flash[:warning] = "Your article has not been published"
-      redirect_to @article
+      @article.status = "draft"
+      render 'edit'
     end
   end
 
