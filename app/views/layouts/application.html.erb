@@ -21,9 +21,11 @@
         <li><a href="#">Leisure</a></li>
       </ul>
       <div class="navbar-right">
-        <p class="navbar-text">
-          <%= Time.new.strftime("%m/%d/%y") %>
-        </p>
+        <ul class="nav navbar-nav">
+          <li>
+            <%= link_to "Sign Up", new_user_registration_path %>
+          </li>
+        </ul>
       </div>
   </nav>
   <div class="container">
