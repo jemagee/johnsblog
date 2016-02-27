@@ -5,8 +5,10 @@
 <% end %>
 
 <%= form_for [article, comment] do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+  <p>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </p>
 
   <%= f.label :body, "Comment" %>
   <%= f.text_field :body %>

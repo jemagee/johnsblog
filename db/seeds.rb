@@ -13,3 +13,11 @@ categories.each do |category|
     Category.create(name: category)
   end
 end
+
+unless User.exists?(email: "admin@exmaple.com")
+  User.create(email: "admin@example.com", password: "password", admin: true)
+end
+
+unless User.exists?(email: "user@example.com")
+  User.create(email: "user@example.com", password: "password")
+end

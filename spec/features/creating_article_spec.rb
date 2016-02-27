@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.feature "Adding a new article" do
 
   before do
+    login_as(FactoryGirl.create(:user, :admin))
     visit new_article_path
   end
 
