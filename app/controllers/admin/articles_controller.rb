@@ -10,7 +10,7 @@ class Admin::ArticlesController < Admin::BaseController
     @article = Article.new(article_params)
     if @article.save
       flash[:succes] = "Your article has been created"
-      redirect_to [:admin, @article]
+      redirect_to @article
     else
       flash.now[:warning] = "Your article was not created"
       render 'new'
@@ -26,7 +26,7 @@ class Admin::ArticlesController < Admin::BaseController
   def update
      if @article.update_attributes(article_params)
       flash[:success] = "Your article was successfully updated"
-      redirect_to [:admin, @article]
+      redirect_to @article
     else
       flash.now[:warning] = "Your article has not been altered"
       render 'edit'

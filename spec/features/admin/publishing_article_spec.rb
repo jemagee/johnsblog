@@ -10,7 +10,7 @@ RSpec.feature "Publishing an article" do
 
   scenario "User can publish an article" do
 
-    visit admin_article_path(article)
+    visit article_path(article)
     click_link "Publish Article"
 
     expect(page).to have_content("Your article has been published")
@@ -20,7 +20,7 @@ RSpec.feature "Publishing an article" do
 
   scenario "Article can not be published with a blank abstract" do
     article.update_attribute(:abstract, "")
-    visit admin_article_path(article)
+    visit article_path(article)
     click_link "Publish Article"
 
     expect(page).to have_content("Your article has not been published")
@@ -30,7 +30,7 @@ RSpec.feature "Publishing an article" do
 
   scenario "Article can not be published with a blank body" do
     article.update_attribute(:body, "")
-    visit admin_article_path(article)
+    visit article_path(article)
     click_link "Publish Article"
 
     expect(page).to have_content("A published article must have some content")
