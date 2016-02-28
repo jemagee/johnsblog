@@ -4,7 +4,7 @@
   <% end %>
 <% end %>
 
-<%= form_for(article, html: { class: "form" } ) do |f| %>
+<%= form_for([:admin, article], html: { class: "form" } ) do |f| %>
   <div class="form-group">
     <%= f.label :title %>
     <%= f.text_field :title, class: "form-control" %>

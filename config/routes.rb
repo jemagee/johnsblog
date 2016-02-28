@@ -1,15 +1,17 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  resources :articles do
+  resources :articles, only: [:show, :index] do
     resources :comments
-    member do
-      get 'publish'
-    end
   end
 
   namespace :admin do
     root 'base#index'
+    resources :articles do
+      member do
+        get 'publish'
+      end
+    end
   end
 
   root 'articles#index'

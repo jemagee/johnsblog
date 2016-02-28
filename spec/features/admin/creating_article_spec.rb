@@ -4,7 +4,7 @@ RSpec.feature "Adding a new article" do
 
   before do
     login_as(FactoryGirl.create(:user, :admin))
-    visit new_article_path
+    visit new_admin_article_path
   end
 
   scenario "Entering the proper information" do

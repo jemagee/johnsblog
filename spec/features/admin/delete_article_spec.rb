@@ -4,10 +4,13 @@ RSpec.feature "Deleting an article" do
 
   let!(:article) { FactoryGirl.create(:article) }
 
+  before do
+    login_as(FactoryGirl.create(:user, :admin))
+  end
+
   scenario "An article is successfully deleted" do
 
-    visit articles_path
-    click_link article.title
+    visit admin_article_path(article)
     click_link "Delete Article"
 
     expect(current_path).to eq articles_path

@@ -5,7 +5,8 @@ RSpec.feature "Editing an article" do
 	let(:article) { FactoryGirl.create(:article) }
 
 	before do 
-		visit edit_article_path(article)
+    login_as(FactoryGirl.create(:user, :admin))
+		visit edit_admin_article_path(article)
 	end
 
 	scenario "Editing an Article" do
