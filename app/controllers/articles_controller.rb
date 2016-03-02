@@ -3,7 +3,11 @@ class ArticlesController < ApplicationController
   before_action :get_article, only: [:show]
 
   def index
-    @articles = Article.all
+    if (user_signed_in? && current_user.admin?)
+      @articles = Article.all
+    else
+      @articles = Article.where.not(status: 'draft')
+    end
   end
 
   def show
