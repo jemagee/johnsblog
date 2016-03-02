@@ -4,11 +4,12 @@ RSpec.feature "Editing and existing comment" do
 
   let!(:article) {FactoryGirl.create(:article, :published)}
   let!(:comment) {FactoryGirl.create(:comment, article: article)}
+  let!(:comment2) {FactoryGirl.create(:comment, article: article)}
 
   before do
     visit "/"
     click_link article.title
-    within("#comment-#{comment.id}") do
+    within("div#comment-#{comment.id}") do
       click_link "Edit Comment"
     end
   end

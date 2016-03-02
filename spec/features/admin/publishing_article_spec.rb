@@ -8,7 +8,7 @@ RSpec.feature "Publishing an article" do
     login_as(FactoryGirl.create(:user, :admin))
   end
 
-  scenario "User can publish an article" do
+  scenario "Admin can publish an article" do
 
     visit article_path(article)
     click_link "Publish Article"

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Users and Adminds see the proper links" do
+RSpec.feature "Users and Admins see the proper links" do
 
   let(:admin) {FactoryGirl.create(:user, :admin)}
   let!(:article) {FactoryGirl.create(:article)}
@@ -15,7 +15,7 @@ RSpec.feature "Users and Adminds see the proper links" do
       expect(page).to_not have_link("Edit Article")
       expect(page).to_not have_link("Delete Article")
       expect(page).to_not have_link("Publish Article")
-      expect(page).to_not have_content("STATUS")
+      expect(page).to_not have_content("Status")
     end
   end
 
@@ -32,7 +32,7 @@ RSpec.feature "Users and Adminds see the proper links" do
       expect(page).to_not have_link("Edit Article")
       expect(page).to_not have_link("Delete Article")
       expect(page).to_not have_link("Publish Article")
-      expect(page).to_not have_content("STATUS")
+      expect(page).to_not have_content("Status")
     end
   end
 
@@ -49,7 +49,7 @@ RSpec.feature "Users and Adminds see the proper links" do
       expect(page).to have_link("Edit Article")
       expect(page).to have_link("Delete Article")
       expect(page).to have_link("Publish Article")
-      expect(page).to have_content("STATUS")
+      expect(page).to have_content("Status")
     end
   end
 end

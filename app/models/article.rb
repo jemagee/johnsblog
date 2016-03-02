@@ -10,7 +10,8 @@ class Article < ActiveRecord::Base
     article.validates :body, presence: { message: "A published article must have some content" }
   end
 
-
-
+  def published?
+  	self.status == "published"
+  end
 
 end
