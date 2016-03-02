@@ -6,13 +6,13 @@ RSpec.feature "Creating a comment associated with a blog" do
 
   before do 
     visit article_path(article)
-    click_link "Add Comment"
   end
 
   scenario "Basic Comment Entering" do
-
-    fill_in "Title", with: "Silly Comment"
-    fill_in "Comment", with: "This is silly comment content for testing purposes"
+    within("#new_comment_form") do
+      fill_in "Title", with: "Silly Comment"
+      fill_in "Comment", with: "This is silly comment content for testing purposes"
+    end
 
     click_button "Create Comment"
 
@@ -22,7 +22,9 @@ RSpec.feature "Creating a comment associated with a blog" do
   end
 
   scenario "Comment requires a title" do
-    fill_in "Comment", with: "This is a silly comment without a title"
+    within("#new_comment_form") do
+      fill_in "Comment", with: "This is a silly comment without a title"
+    end
 
     click_button "Create Comment"
     expect(page).to have_content("Your comment has not been created")

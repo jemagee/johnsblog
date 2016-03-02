@@ -40,5 +40,16 @@
       <%= link_to "Edit Comment", [:edit, @article, comment] %>
    </div>
   <% end %>
+  <%= form_for([@article, @article.comments.build], html: {id: "new_comment_form" } ) do |f|  %>
+
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+
+    <%= f.label :body, "Comment" %>
+    <%= f.text_area :body %>
+
+    <%= f.submit %>
+  <% end %>
+
 <% end %>
 

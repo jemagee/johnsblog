@@ -9,7 +9,7 @@ RSpec.feature "Editing and existing comment" do
   before do
     visit "/"
     click_link article.title
-    within("div#comment-#{comment.id}") do
+    within("#comment-#{comment.id}") do
       click_link "Edit Comment"
     end
   end
