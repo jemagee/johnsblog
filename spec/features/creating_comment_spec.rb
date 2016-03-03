@@ -28,7 +28,6 @@ RSpec.feature "Creating a comment associated with a blog" do
 
     click_button "Create Comment"
     expect(page).to have_content("Your comment has not been created")
-    expect(page).to have_content("Title can't be blank")
-    expect(page).to_not have_content(article.title)
+    expect(page).to_not have_content("This is a silly comment without a title")
   end
 end

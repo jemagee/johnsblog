@@ -37,7 +37,6 @@
     <div id="comment-<%= comment.id %>" >
       <%= comment.title %>
       <%= comment.body %>
-      <%= link_to "Edit Comment", [:edit, @article, comment] %>
    </div>
   <% end %>
   <%= form_for([@article, @article.comments.build], html: {id: "new_comment_form" } ) do |f|  %>
