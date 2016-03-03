@@ -32,14 +32,37 @@ RSpec.feature "Viewing Individual Comments in the Admin Namespace" do
 
 
   context "Admin Users" do
-    before { login_as(admin)}
-
-    scenario "Admind Users can view individual comments" do
-
+    before  do 
+      login_as(admin)
       visit admin_comment_path(comment)
+    end
+
+    scenario "Admin Users can view individual comments" do
 
       expect(page).to have_content(comment.title)
       expect(page).to have_content(comment.body)
+    end
+
+    scenario "Admin can edit individual comments" do
+
+      click_link "Edit Comment"
+
+      fill_in "Body", with: "New Comment Body"
+      fill_in "Title", with: "New Comment Title"
+
+      click_button "Update Comment"
+
+      expect(page).to have_content("Comment has been updated")
+      expect(page).to have_content("New Comment Body")
+      expect(page).to have_content("New Comment Title")
+    end
+
+    scenario "Admin can delete individual comments" do
+
+      click_link "Delete Comment"
+
+      expect(page).to have_content("Comment has been deleted")
+      expect(page).to have_current_path(admin_root_path)
     end
   end
 end
