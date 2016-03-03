@@ -8,9 +8,7 @@ class Admin::BaseController < ApplicationController
   private
 
     def check_authorization
-      authenticate_user!
-
-      unless current_user.admin? 
+      unless (user_signed_in? && current_user.admin?)
         flash[:warning] = "You can not access that page"
         redirect_to root_path
       end

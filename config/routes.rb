@@ -12,6 +12,7 @@ Rails.application.routes.draw do
         get 'publish'
       end
     end
+    resources :comments
   end
 
   root 'articles#index'

@@ -7,7 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  
+<% flash.each do |message| %>
+    <%= message %>
+  <% end %>
   <nav class="navbar navbar-inverse">
     <div class="container">
       <div class="navbar-header">
@@ -41,9 +43,6 @@
       </div>
   </nav>
   <div class="container">
-    <% flash.each do |key, message| %>
-      <%= message %>
-    <% end %>
     <%= yield %>
   </div>
 </body>

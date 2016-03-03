@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Viewing an article" do
 
-	let!(:article) { FactoryGirl.create(:article) }
+	let!(:article) { FactoryGirl.create(:article, :published) }
 
 	scenario "You should be able to view the article from the index page" do
 
