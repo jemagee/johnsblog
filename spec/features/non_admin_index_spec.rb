@@ -5,8 +5,8 @@ RSpec.feature "Testing the Public article index" do
 	let!(:user) {FactoryGirl.create(:user)}
 	let!(:admin) {FactoryGirl.create(:user, :admin)}
 	let!(:draft) {FactoryGirl.create(:article)}
-	let!(:published) {FactoryGirl.create(:article, title: "This is the published title", status: 'published')}
-	let!(:archived) {FactoryGirl.create(:article, title: "This is the archived title", status: 'archived')}
+	let!(:published) {FactoryGirl.create(:article,  :published)}
+	let!(:archived) {FactoryGirl.create(:article, :archived)}
 
 	scenario "As an anonymous user" do
 		visit root_path
