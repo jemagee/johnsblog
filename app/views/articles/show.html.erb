@@ -31,7 +31,6 @@
 <% end %>
 
 <% if @article.published? %>
-  <%= link_to "Add Comment", new_article_comment_path(@article) %>
 
   <% @article.comments.each do |comment| %>
     <div id="comment-<%= comment.id %>" >
@@ -40,9 +39,6 @@
    </div>
   <% end %>
   <%= form_for([@article, @article.comments.build], html: {id: "new_comment_form" } ) do |f|  %>
-
-    <%= f.label :title %>
-    <%= f.text_field :title %>
 
     <%= f.label :body, "Comment" %>
     <%= f.text_area :body %>
