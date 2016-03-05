@@ -4,8 +4,7 @@ RSpec.feature "Users can sign in" do
   let!(:user) {FactoryGirl.create(:user, :admin)}
 
   scenario "With Valid Credentials" do
-    visit "/"
-    click_link "Sign In"
+    visit new_user_session_path
 
     fill_in "Email", with: user.email
     fill_in "Password", with: user.password
@@ -13,7 +12,6 @@ RSpec.feature "Users can sign in" do
     click_button "Log in"
 
     expect(page).to have_content("Signed in successfully")
-    expect(page).to have_content(user.email)
     expect(page).to have_link("Sign Out")
   end
 end

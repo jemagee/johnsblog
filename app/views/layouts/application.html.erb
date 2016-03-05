@@ -8,7 +8,8 @@
 </head>
 <body>
 <% flash.each do |type, message| %>
-    <div class="alert alert-<%= type %>">
+    <div class="alert alert-<%= type %> alert-dismissable">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
       <%= message %>
     </div> 
   <% end %>
@@ -26,17 +27,7 @@
       </ul>
       <div class="navbar-right">
         <ul class="nav navbar-nav">
-          <% if !user_signed_in? %>
-            <li>
-              <%= link_to "Sign Up", new_user_registration_path %>
-            </li>
-            <li>
-              <%= link_to "Sign In", new_user_session_path %>
-            </li>
-          <% else %>
-            <li class="navbar-text">
-              Signed in as <%= current_user.email %>
-            </li>
+          <% if user_signed_in? && current_user.admin? %>
             <li>
               <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
             </li>
