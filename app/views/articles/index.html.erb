@@ -3,10 +3,27 @@
   <h1>Welcome to MageeWorld</h1>
   </header>
 </div>
+<div class="row">
+  <div class="jumbotron">
+    <h3>Pardon the Dust</h3>
+    <p>
+      Mageeworld is a website that is constantly growing and changing.  If some of the links up above don't work yet it's because I haven't had a chance to get to it, but I will, I promise
+    </p>
+    <p>
+      If you're curious as to why the site exists in an 'incomplete' state, please read this article (my first one) as explanation.
+    </p>
+  </div>
+  
+</div>
 
 <div class="row">
 <% @articles.each do |article| %>
 	<p>
-		<%= link_to article.title,  article_path(article) %>
+		<h3>
+      <%= link_to article.title,  article_path(article) %>
+      <small>
+        published <%= time_ago_in_words(article.created_at) %> ago
+      </small>
+    </h3>
 	</p>
 <% end %>
