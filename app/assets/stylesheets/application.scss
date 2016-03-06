@@ -21,3 +21,32 @@
   font-style: italic;
   color: #787878; 
  }
+
+ .comment-time {
+  @extend .abstract;
+  font-size: 12px;
+  border-bottom: .1px solid #D3D3D3;
+ }
+
+.alert-notice {
+  @extend .alert-warning;
+}
+
+.alert-alert {
+  @extend .alert-danger;
+}
+
+#flash {
+  margin-bottom: -20px;
+}
+
+.textarea-comment {
+  resize: none;
+  overflow: auto;
+}
+
+.comment-body {
+  margin-top: 10px;
+  border-bottom: .1px solid #D3D3D3;
+  padding-bottom: 10px;
+}

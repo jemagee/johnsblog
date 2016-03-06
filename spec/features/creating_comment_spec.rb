@@ -21,7 +21,7 @@ RSpec.feature "Creating a comment associated with a blog" do
   end
 
   scenario "Comment requires a body" do
-    click_button "Create Comment"
+    click_button "Add Comment"
     expect(page).to have_content("Your comment has not been created")
     expect(page).to_not have_content("This is a silly comment without a title")
   end

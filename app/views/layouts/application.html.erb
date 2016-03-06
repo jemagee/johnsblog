@@ -7,11 +7,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<% flash.each do |type, message| %>
-    <div class="alert alert-<%= type %> alert-dismissable">
-      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-      <%= message %>
-    </div> 
+  <% if flash.count != 0 %>
+    <%= render 'shared/flashes' %>
   <% end %>
   <nav class="navbar navbar-inverse">
     <div class="container">

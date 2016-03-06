@@ -1,48 +1,53 @@
-<h1 class="page-header">
-  <%= @article.title %>
-</h1>
-
-  <% if !@article.category.nil? %>
-    <h3>
-      Filed In: <%= @article.category.name %>
-    </h3>
-  <% end %>
-
-
-<div class="abstract">
-  Abstract: <%= @article.abstract %>
+<div class="row">
+  <h1 class="page-header">
+    <%= @article.title %>
+    <small>
+      <% if !@article.category.nil? %>
+        Filed under <%= @article.category.name %>
+      <% end %>
+    </small>
+  </h1>
 </div>
-
-<div class="article-body">
-  <h4>Article Body</h4>
-  <%= @article.body %>
+<div class="abstract row">
+    <%= @article.abstract %>
+</div>
+<div class="row">
+  <div class="article-body">
+    <%= simple_format(@article.body) %>
+  </div>
 </div>
 <% if @article.published? %>
-
-  <% @article.comments.each do |comment| %>
-    <div id="comment-<%= comment.id %>" >
-      <%= comment.title %>
-      <%= comment.body %>
-   </div>
-  <% end %>
-  <%= form_for([@article, @article.comments.build], html: {id: "new_comment_form" } ) do |f|  %>
-
-    <%= f.label :body, "Comment" %>
-    <%= f.text_area :body %>
-
-    <%= f.submit %>
-  <% end %>
+  <div class="row">
+    <%= render 'comment', article: @article %>
+  </div>
+  <div class="row">
+    <h4>Comments</h4> 
+    <% @article.comments.each do |msg| %>
+      <% unless msg.created_at.blank? %>
+        <div id="comment-<%= msg.id %>">
+            <div class="comment-time">
+              Posted <%= time_ago_in_words(msg.created_at) %> ago
+            </div>
+          <div class="comment-body">
+            <%= msg.body %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 <% end %>
 
 <% admins_only do %>
-  <p>
-    Status: <%= @article.status.upcase %>
-  </p>
-  <div class="btn-group">
-    <%= link_to "Edit Article", edit_admin_article_path(@article), class: "btn btn-xs btn-success" %>
-    <% if !@article.published? %>
-      <%= link_to "Publish Article", publish_admin_article_path(@article), class: "btn btn-xs btn-info" %>
-    <% end %>
-    <%= link_to "Delete Article", admin_article_path(@article), method: :delete, data: { confirm: "Are you sure you want to delete this article" }, class: "btn btn-xs btn-danger" %> 
+  <div class="row" id="admin">
+    <div>
+      Status: <%= @article.status.upcase %>
+    </div>
+    <div class="btn-group">
+      <%= link_to "Edit Article", edit_admin_article_path(@article), class: "btn btn-xs btn-success" %>
+      <% if !@article.published? %>
+        <%= link_to "Publish Article", publish_admin_article_path(@article), class: "btn btn-xs btn-info" %>
+      <% end %>
+      <%= link_to "Delete Article", admin_article_path(@article), method: :delete, data: { confirm: "Are you sure you want to delete this article" }, class: "btn btn-xs btn-danger" %> 
+    </div>
   </div>
 <% end %>
