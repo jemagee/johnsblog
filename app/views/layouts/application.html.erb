@@ -22,16 +22,22 @@
         <li><a href="#">Food</a></li>
         <li><a href="#">Leisure</a></li>
       </ul>
-      <div class="navbar-right">
-        <ul class="nav navbar-nav">
-          <% if user_signed_in? && current_user.admin? %>
+      <% if user_signed_in? && current_user.admin? %>
+        <div class="navbar-right">
+          <ul class="nav navbar-nav">
             <li>
               <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
             </li>
-          <% end %>
-        </ul>
-      </div>
+          </ul>
+        </div>
+      <% end %> 
+    </div>
   </nav>
+  <div class="tagline">
+      <div class="container">
+        The thoughts, musings, and evolution of an intermediate beginner
+      </div>
+  </div>
   <div class="container">
     <%= yield %>
   </div>
