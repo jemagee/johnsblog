@@ -16,6 +16,7 @@ RSpec.feature "Publishing an article" do
     expect(page).to have_content("Your article has been published")
     expect(page).to_not have_content("Status: DRAFT")
     expect(page).to_not have_link("Publish Article")
+    expect(page).to have_content("Published on: #{Date.current}")
   end
 
   scenario "Article can not be published with a blank abstract" do

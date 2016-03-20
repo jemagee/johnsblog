@@ -17,8 +17,10 @@ RSpec.feature "Adding a new article" do
     expect(page).to have_content("Your article has been created")
     expect(page).to have_content("Title of Test Article")
     expect(page).to have_content("This is the test body of the article")
-    expect(page).to have_content("Filed In: Computer")
+    expect(page).to have_content("Filed under Computer")
     expect(page).to have_content("Status: DRAFT")
+    expect(page).to_not have_content("Published on:")
+    expect(page).to_not have_content("#{Date.current}")
   end
 
   scenario "A new article, even a draft, requires a title" do

@@ -10,10 +10,10 @@ RSpec.feature "Creating a comment associated with a blog" do
 
   scenario "Basic Comment Entering" do
     within("#new_comment_form") do
-      fill_in "Comment", with: "This is silly comment content for testing purposes"
+      fill_in "comment_body", with: "This is silly comment content for testing purposes"
     end
 
-    click_button "Create Comment"
+    click_button "Add Comment"
 
     expect(page).to have_content("Your comment has been created")
     expect(page).to have_content("This is silly comment content for testing purposes")

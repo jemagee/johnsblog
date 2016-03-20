@@ -5,6 +5,9 @@
       <% if !@article.category.nil? %>
         Filed under <%= @article.category.name %>
       <% end %>
+      <% if @article.published? %>
+        Published on: <%= @article.published_on %>
+      <% end %>
     </small>
   </h1>
 </div>

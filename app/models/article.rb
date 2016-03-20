@@ -2,6 +2,9 @@ class Article < ActiveRecord::Base
   belongs_to :category
   has_many :comments
 
+  before_save :set_publication_date,
+    if: Proc.new { |article| article.published? && article.published_on.nil? }
+
   validates :title, presence: true
  # validates :abstract, presence: true, on: :update, if: Proc.new {|a| a.status == "published"}
  # validates :body, presence: true, on: :update, if: Proc.new { |a| a.status == "published" }
@@ -12,6 +15,10 @@ class Article < ActiveRecord::Base
 
   def published?
   	self.status == "published"
+  end
+
+  def set_publication_date
+    self.published_on = Date.current
   end
 
 end
