@@ -20,9 +20,15 @@
 <% @articles.each do |article| %>
 	<div class="row">
 		<h3>
-      <%= link_to article.title,  article_path(article) %>
+      <%= link_to article.title,  article_path(article) %><br />
+      <% if !article.published_on.nil? %>
+        <small>
+          Published <%= time_ago_in_words(article.published_on) %> ago
+        </small>
+      <% end %>
+      <br />
       <small>
-        published <%= time_ago_in_words(article.created_at) %> ago
+        Comments: <%= article.comments.count %>
       </small>
     </h3>
 	</p>
