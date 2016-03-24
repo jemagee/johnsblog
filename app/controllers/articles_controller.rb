@@ -6,7 +6,7 @@ class ArticlesController < ApplicationController
     if (user_signed_in? && current_user.admin?)
       @articles = Article.all
     else
-      @articles = Article.where.not(status: 'draft')
+      @articles = Article.published
     end
   end
 

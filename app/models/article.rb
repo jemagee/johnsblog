@@ -2,6 +2,8 @@ class Article < ActiveRecord::Base
   belongs_to :category
   has_many :comments
 
+
+  scope :published, -> {where(status: "published").order(published_on: :desc)}
   before_save :set_publication_date,
     if: Proc.new { |article| article.published? && article.published_on.nil? }
 
