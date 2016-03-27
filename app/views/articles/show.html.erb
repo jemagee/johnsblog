@@ -25,10 +25,10 @@
     <%= render 'comment', article: @article %>
   </div>
   <div class="row">
-    <h4><%= @article.comments.count %> Comments</h4> 
+    <h4><%= pluralize(@article.comments.count, 'Comment') %></h4> 
     <% @article.comments.each do |msg| %>
       <% unless msg.created_at.blank? %>
-        <div id="comment-<%= msg.id %>">
+        <div id="comment-<%= msg.id %>" class="comment">
             <span class="comment-time">
               Posted <%= time_ago_in_words(msg.created_at) %> ago
             </span>
