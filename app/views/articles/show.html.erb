@@ -5,8 +5,9 @@
       <% if !@article.category.nil? %>
         Filed under <%= @article.category.name %>
       <% end %>
+      <br />
       <% if @article.published? %>
-        Published on: <%= @article.published_on %>
+        Published: <%= time_ago_in_words(@article.published_on)%> ago
       <% end %>
     </small>
   </h1>
@@ -24,13 +25,14 @@
     <%= render 'comment', article: @article %>
   </div>
   <div class="row">
-    <h4>Comments</h4> 
+    <h4><%= @article.comments.count %> Comments</h4> 
     <% @article.comments.each do |msg| %>
       <% unless msg.created_at.blank? %>
         <div id="comment-<%= msg.id %>">
-            <div class="comment-time">
+            <span class="comment-time">
               Posted <%= time_ago_in_words(msg.created_at) %> ago
-            </div>
+            </span>
+            <br />
           <div class="comment-body">
             <%= msg.body %>
           </div>
