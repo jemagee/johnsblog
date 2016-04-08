@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Blog</title>
+  <title>MageeWorld</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -10,65 +10,10 @@
   <% if flash.count != 0 %>
     <%= render 'shared/flashes' %>
   <% end %>
-  <nav class="navbar navbar-inverse">
-    <div class="container">
-      <div class="navbar-header">
-        <%= link_to "MageeWorld", root_path, class: "navbar-brand" %>
-      </div>
-      <ul class= "nav navbar-nav">
-        <li><a href="#">Computer</a></li>
-        <li><a href="#">Geek</a></li>
-        <li><a href="#">Sports</a></li>
-        <li><a href="#">Food</a></li>
-        <li><a href="#">Leisure</a></li>
-      </ul>
-      <% if user_signed_in? && current_user.admin? %>
-        <div class="navbar-right">
-          <ul class="nav navbar-nav">
-            <li>
-              <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-            </li>
-            <li>
-              <%= link_to "Create New Draft", new_admin_article_path %>
-            </lI>
-          </ul>
-        </div>
-      <% end %> 
-    </div>
-  </nav>
-  <div class="tagline">
-      <div class="container">
-        The thoughts, musings, and evolution of a neuroatypical intermediate beginner
-      </div>
-  </div>
+<%= render 'shared/navbar' %>
   <div class="container">
     <%= yield %>
   </div>
-  <footer class="navbar navbar-inverse" id="footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4">
-          <p class="navbar-text">
-            <a href="mailto:jemagee@cox.net?subject=Mageeworld Contact" class="navbar-link">Contact Me</a>
-          </p>
-        </div>
-        <div class="col-md-4">
-          <p class="navbar-text">
-            <a href="https://github.com/jemagee/" target="_blank" class="navbar-link">GitHub</a>
-          </p>
-        </div>
-        <div class="col-md-4">
-          <p class="navbar-text">
-            <a href="#" class="navbar-link">About (Coming Soon)</a>
-          </p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="navbar-text">
-          &copy; 2016, John Magee
-        </div>
-      </div>
-    </div>
-  </footer>
-</body>
+  <%= render 'shared/footer' %>
+ </body>
 </html>

@@ -10,7 +10,7 @@
       Mageeworld is a website that is constantly growing and changing.  If some of the links up above don't work yet it's because I haven't had a chance to get to it, but I will, I promise
     </p>
     <p>
-      If you're curious as to why the site exists in an 'incomplete' state, please read <%= link_to "this article", controller: "articles", action: "show", id: 1 %> (my first one) as explanation.
+      If you're curious as to why the site exists in an 'incomplete' state, please read <%= link_to "this article", article_path(1) %> (my first one) as explanation.
     </p>
   </div>
 </div>
@@ -18,8 +18,8 @@
 <div class="row" id="articles">
 <% @articles.each do |article| %>
 	<div class="row">
-		<h3>
-      <%= link_to article.title,  article_path(article) %><br />
+		<h4>
+      <%= link_to article.title,  article_path(article), class: "index_title" %><br />
       <% if !article.published_on.nil? %>
         <small>
           Published <%= time_ago_in_words(article.published_on) %> ago
@@ -29,7 +29,7 @@
       <small>
         Comments: <%= article.comments.count %>
       </small>
-    </h3>
+    </h4>
 	</div>
 <% end %>
 </div>
