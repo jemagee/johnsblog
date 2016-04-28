@@ -42,4 +42,14 @@ RSpec.feature "Adding a new article" do
     expect(page).to_not have_selector('b', text: 'processes')
     expect(page).to have_link('kramdown', 'http://www.go.com')
   end
+
+  scenario "Kramdown allows you to add classes to tags" do
+    fill_in "Title", with: "Test Title of Article"
+    fill_in "Abstract", with: "Test Abstract of article"
+    select "Computer", from: "article[category_id]"
+    fill_in "Body", with: '[kramdown](http://www.go.gom){: .link-dog :target="_blank"}'
+    click_button "Create Article"
+    expect(page).to have_css(".link-dog")
+    expect(page).to have_link('kramdown')
+  end
 end
