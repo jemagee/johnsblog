@@ -9,4 +9,9 @@ module ApplicationHelper
     markdown = Redcarpet::Markdown.new(renderer, {fenced_code_blocks: true, disable_indented_code_blocks: true})
     markdown.render(input).html_safe
   end
+
+  def kramdown_process(input)
+    input = Rails::Html::FullSanitizer.new.sanitize(input)
+    Kramdown::Document.new(input).to_html.html_safe
+  end
 end

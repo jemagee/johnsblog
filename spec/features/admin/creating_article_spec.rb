@@ -30,4 +30,16 @@ RSpec.feature "Adding a new article" do
     expect(page).to have_content("Title can't be blank")
     expect(page).to_not have_content("Status: DRAFT")
   end
+
+  scenario "The article processes markdown properly" do
+    fill_in "Title", with: "Test Title of Article"
+    fill_in "Abstract", with: "Test Abstract of article"
+    select "Computer", from: "article[category_id]"
+    fill_in "Body", with: "This is a test body with *markdown* so that we can **test** whether [kramdown](http://www.go.com) <b>processes</b> properly."
+    click_button "Create Article"
+    expect(page).to have_selector('em', text: 'markdown')
+    expect(page).to have_selector('strong', text: 'test')
+    expect(page).to_not have_selector('b', text: 'processes')
+    expect(page).to have_link('kramdown', 'http://www.go.com')
+  end
 end
