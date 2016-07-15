@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  resources :pictures
+
   namespace :admin do
     root 'base#index'
     resources :articles do
