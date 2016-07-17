@@ -41,5 +41,27 @@ RSpec.feature "Uploading a Picture" do
       expect(page).to have_content("The picture was not uploaded")
       expect(page).to have_content("Name can't be blank")
     end
+
+    scenario "Can't create a new record without a photo attached" do
+
+      fill_in "picture[name]", with: "Blank Picture Test"
+
+      click_button "Upload Picture"
+
+      expect(page).to have_content("The picture was not uploaded")
+      expect(page).to have_content("No file was attached")
+    end
+
+    scenario "Can not upload a file not on the allowed listm trying PSD extension" do
+
+      fill_in "picture[name]", with: "PSD Picture test"
+      attach_file "picture[image]", "spec/fixtures/fork.psd"
+
+      click_button "Upload Picture"
+
+      expect(page).to have_content("The picture was not uploaded")
+      expect(page).to have_content("File type unacceptable")
+
+    end
   end
 end
