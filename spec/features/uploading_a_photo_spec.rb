@@ -63,5 +63,16 @@ RSpec.feature "Uploading a Picture" do
       expect(page).to have_content("File type unacceptable")
 
     end
-  end
+
+    scenario "Can not upload a file that is more than 2 MB" do
+
+      fill_in "picture[name]", with: "Large Picture Test"
+      attach_file "picture[image]", "spec/fixtures/largepicture.jpg"
+
+      click_button "Upload Picture"
+
+      expect(page).to have_content("The picture was not uploaded")
+      expect(page).to have_content("Image file size must be less than 2 MB")
+    end
+  end 
 end

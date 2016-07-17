@@ -85,6 +85,9 @@ GEM
     factory_girl_rails (4.5.0)
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
+    file_validators (2.1.0)
+      activemodel (>= 3.0)
+      mime-types (>= 1.0)
     font-awesome-rails (4.5.0.0)
       railties (>= 3.2, < 5.0)
     globalid (0.3.6)
@@ -221,6 +224,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise (~> 3.4.1)
   factory_girl_rails
+  file_validators
   font-awesome-rails (~> 4.5)
   haml
   jbuilder (~> 2.0)
