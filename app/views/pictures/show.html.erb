@@ -1,3 +1,10 @@
-show.html.erb
-<%= @picture.name %>
-<%= @picture.image %>
+<div id="title">
+  <h1><%= @picture.name %></h1>
+  <p><%= @picture.image.url %></p>
+</div>
+
+<div id="thumb">
+  <h3>The thumbnail URL</h3>
+  <p><%= @picture.image.thumb.url %></p>
+  <p><%= image_tag @picture.image.thumb %></p>
+</div>
