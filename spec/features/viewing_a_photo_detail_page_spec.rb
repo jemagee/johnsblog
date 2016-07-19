@@ -23,5 +23,10 @@ RSpec.feature "Viewing the details of an uploaded photo" do
       expect(page).to have_content(picture.image.thumb.url)
       expect(page).to have_xpath("//img[contains(@src, \"#{picture.image.thumb}\")]")
     end
+
+    within("div#display") do
+      expect(page).to have_content(picture.image.display.url)
+      expect(page).to have_xpath("//img[contains(@src, \"#{picture.image.display}\")]")
+    end
   end
 end
