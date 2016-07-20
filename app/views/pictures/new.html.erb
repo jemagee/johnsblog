@@ -1,6 +1,8 @@
 <%if @picture.errors.any? %>
   <% @picture.errors.full_messages.each do |msg| %>
-    <%= msg %>
+    <p>
+      <%= msg %>
+    </p>
   <% end %>
 <% end %>
 

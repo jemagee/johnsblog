@@ -2,6 +2,10 @@ class PicturesController < ApplicationController
 
   before_action :check_authorization
 
+  def index
+    @pictures = Picture.all
+  end
+
   def new
     @picture = Picture.new
   end

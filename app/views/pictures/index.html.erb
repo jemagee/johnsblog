@@ -1,0 +1,12 @@
+
+<% @pictures.in_groups_of(3, false) do |pictures| %>
+  <div class="row">
+    <% pictures.each do |picture| %>
+      <div id="<%= picture.id %>" class="col-md-3">
+       <h3><%= picture.name %></h3>
+        <%= image_tag picture.image.thumb %>
+        <%= link_to "Full Size #{picture.name}", picture.image.display.url %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
