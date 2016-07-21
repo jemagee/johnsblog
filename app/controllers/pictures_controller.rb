@@ -29,9 +29,13 @@ class PicturesController < ApplicationController
   end
 
   def update
-    @picture.update_attributes(picture_params)
-    flash[:success] = "The picture was updated"
-    redirect_to @picture
+    if @picture.update_attributes(picture_params)
+      flash[:success] = "The picture was updated"
+      redirect_to @picture
+    else
+      flash[:warning] = "The picture was not updated"
+      render 'edit'
+    end
   end
   
   private
