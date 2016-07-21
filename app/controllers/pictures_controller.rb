@@ -37,6 +37,12 @@ class PicturesController < ApplicationController
       render 'edit'
     end
   end
+
+  def destroy
+    @picture.destroy
+    flash[:success] = "The photo was deleted"
+    redirect_to pictures_path
+  end
   
   private
 

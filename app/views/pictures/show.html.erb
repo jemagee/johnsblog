@@ -14,3 +14,6 @@
   <p><%= @picture.image.display.url %></p>
   <p><%= image_tag @picture.image.display %></p>
 </div>
+<div>
+  <%= link_to "Delete Photo", @picture, method: :delete, data: {confirm: "Are you sure you want to delete this picture?"} %>
+</div>
