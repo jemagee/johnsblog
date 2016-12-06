@@ -12,6 +12,6 @@ module ApplicationHelper
 
   def kramdown_process(input)
     input = Rails::Html::FullSanitizer.new.sanitize(input)
-    Kramdown::Document.new(input).to_html.html_safe
+    Kramdown::Document.new(input, {syntax_highlighter: :rouge}).to_html.html_safe
   end
 end
