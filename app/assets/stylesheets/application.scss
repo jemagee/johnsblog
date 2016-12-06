@@ -69,3 +69,10 @@
 #footer {
   margin-top: 50px;
 }
+
+.blockquote-custom {
+  @extend blockquote;
+  font-size: 18px;
+  color: Grey;
+  font-style: oblique;
+}

@@ -21,8 +21,8 @@ gem 'font-awesome-rails', '~> 4.5'
 gem 'haml'
 gem 'redcarpet'
 gem 'kramdown', '~> 1.10'
-# Add Rouge for code higlight
-gem 'rouge', '~> 1.10'
+# Add coderay for code higlight
+gem 'coderay'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views

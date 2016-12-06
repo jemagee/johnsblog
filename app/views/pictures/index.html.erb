@@ -1,4 +1,6 @@
-
+<div class="row">
+	<%= link_to "Add Picture", new_picture_path, class: "btn btn-primary" %>
+</div>
 <% @pictures.in_groups_of(3, false) do |pictures| %>
   <div class="row">
     <% pictures.each do |picture| %>
