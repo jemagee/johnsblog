@@ -11,6 +11,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    @article.increment!(:reads) unless (user_signed_in? && current_user.admin?)
   end
 
   private

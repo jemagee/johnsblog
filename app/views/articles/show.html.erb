@@ -1,15 +1,17 @@
 <div class="row">
   <h1 class="page-header">
-    <%= @article.title %><br />
-    <small>
-      <% if !@article.category.nil? %>
-        Filed under <%= @article.category.name %>
-      <% end %>
-      <br />
-      <% if @article.published? %>
-        Published: <%= time_ago_in_words(@article.published_on)%> ago
-      <% end %>
-    </small>
+    <%= @article.title %>
+    <div id="articleinfo">
+      <small>
+        <% if !@article.category.nil? %>
+          <div>Filed under <%= @article.category.name %></div>
+        <% end %>
+        <% if @article.published? %>
+          <div>Published: <%= time_ago_in_words(@article.published_on)%> ago</div>
+        <% end %>
+        <div id="views">Views: <%= @article.reads %></div>
+      </small>
+    </div>
   </h1>
 </div>
 <div class="abstract row">
