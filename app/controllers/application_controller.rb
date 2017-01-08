@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
 
   private
 
+   def after_sign_in_path_for(resource)
+    admin_root_path
+   end
+
     def check_authorization
       unless (user_signed_in? && current_user.admin?)
         flash[:warning] = "You can not access that page"

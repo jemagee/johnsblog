@@ -13,5 +13,6 @@ RSpec.feature "Users can sign in" do
 
     expect(page).to have_content("Signed in successfully")
     expect(page).to have_link("Sign Out")
+    expect(current_path).to eq admin_root_path
   end
 end
