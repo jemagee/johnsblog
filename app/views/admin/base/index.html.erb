@@ -3,9 +3,11 @@
     <header>
       <h1>Mageeworld Admin</h1>
     </header>
-    <p>
-      This is the admin section of Mageeworld.com
-    </p>
+    <div id="drafts">
+      <% @drafts.each do |draft| %>
+        <%= link_to draft.title, edit_admin_article_path(draft) %>
+      <% end %>
+    </div>
   </div>
   <div class="col-md-3">
     <h2>Administrative Links</h2>

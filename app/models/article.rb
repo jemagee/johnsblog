@@ -4,6 +4,8 @@ class Article < ActiveRecord::Base
 
 
   scope :published, -> {where(status: "published").order(published_on: :desc)}
+  scope :drafts, -> {where(status: "draft").order(updated_at: :desc)}
+  
   before_save :set_publication_date,
     if: Proc.new { |article| article.published? && article.published_on.nil? }
 
@@ -21,6 +23,10 @@ class Article < ActiveRecord::Base
 
   def set_publication_date
     self.published_on = Date.current
+  end
+
+  def draft? 
+    self.status = "draft"
   end
 
 end
