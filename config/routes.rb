@@ -12,9 +12,8 @@ Rails.application.routes.draw do
 
   resources :pictures
 
-  get '/admin' => 'admin/base#index', as: :admin_root
   namespace :admin do
-    #root 'base#index'
+    root 'base#index'
     resources :articles do
       member do
         get 'publish'
