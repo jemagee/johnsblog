@@ -5,9 +5,18 @@
     </header>
     <div id="drafts">
       <% @drafts.each do |draft| %>
-        <%= link_to draft.title, edit_admin_article_path(draft) %>
+        <div>
+          <%= link_to draft.title, edit_admin_article_path(draft) %>
+        </div>
       <% end %>
     </div>
+    <div id="comments">
+      <% @comments.each do |comment| %>
+        <div>
+          <%= comment.body %>
+          <%= link_to "Delete Comment", admin_comment_path(comment), method: :delete %>
+        </div>
+      <% end %>
   </div>
   <div class="col-md-3">
     <h2>Administrative Links</h2>

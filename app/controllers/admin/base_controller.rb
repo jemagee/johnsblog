@@ -4,6 +4,7 @@ class Admin::BaseController < ApplicationController
 
   def index
   	@drafts = Article.drafts
+  	@comments = Comment.admin_home
   end
     
 end
