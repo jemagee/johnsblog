@@ -17,6 +17,20 @@
  *= require_self
  */
 
+ #drafts div.draft {
+  margin-left: 10px;
+  padding-top: 10px;
+
+  a {
+    font-size: 20px;
+  }
+ }
+
+ #comments div.admin- comment {
+  margin-left: 10px;
+  padding-top: 10px;
+ }
+
 #articleinfo div {
   padding-bottom: 10px;
 }

@@ -53,6 +53,8 @@ RSpec.feature "Testing the Public article index" do
 		expect(page).to have_content(draft.title)
 		expect(page).to have_content("Sign Out")
 		expect(page).to have_content("Create New Draft")
+		expect(page).to have_content("Picture Gallery")
+		expect(page).to have_content("Admin Home")
 	end
 end
 

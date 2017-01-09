@@ -17,7 +17,7 @@ class Admin::CommentsController < Admin::BaseController
 
   def destroy
     @comment.destroy
-    flash[:succss] = "Comment has been deleted"
+    flash[:success] = "Comment has been deleted"
     redirect_to admin_root_path
   end
 
