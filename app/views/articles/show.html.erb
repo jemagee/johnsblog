@@ -13,7 +13,7 @@
         <div id="tags">
         <%= @article.tags.count %>
           <%= @article.tags.each do |tag| %>
-            <%= tag.name %>
+            <span><%= tag.name %></span>
           <% end %>
         </div>
       </small>

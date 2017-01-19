@@ -28,9 +28,13 @@ RSpec.feature "Testing adding tags to an article" do
 		fill_in "Tags", with: "RSpec, Ruby Gems, NFL Project"
 		click_button "Update Article"
 
-		within("div#tags") do
+		within("div#tags span:nth-of-type(1)") do
 			expect(page).to have_content("RSpec")
+		end
+		within("div#tags span:nth-of-type(2)") do
 			expect(page).to have_content("Ruby Gems")
+		end
+		within("div#tags span:nth-of-type(3)") do
 			expect(page).to have_content("NFL Project")
 		end
 	end
