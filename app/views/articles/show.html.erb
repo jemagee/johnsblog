@@ -10,6 +10,12 @@
           <div>Published: <%= time_ago_in_words(@article.published_on)%> ago</div>
         <% end %>
         <div id="views">Views: <%= @article.reads %></div>
+        <div id="tags">
+        <%= @article.tags.count %>
+          <%= @article.tags.each do |tag| %>
+            <%= tag.name %>
+          <% end %>
+        </div>
       </small>
     </div>
   </h1>
