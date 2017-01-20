@@ -6,7 +6,12 @@ class ArticlesController < ApplicationController
     if (user_signed_in? && current_user.admin?)
       @articles = Article.all
     else
-      @articles = Article.published
+      if params[:tag_search]
+        @articles = Article.published.joins(:tags).where(tags: {name: params[:tag_search]})
+        @tag_name = params[:tag_search]
+      else
+        @articles = Article.published
+      end
     end
   end
 

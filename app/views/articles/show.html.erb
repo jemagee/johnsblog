@@ -10,12 +10,14 @@
           <div>Published: <%= time_ago_in_words(@article.published_on)%> ago</div>
         <% end %>
         <div id="views">Views: <%= @article.reads %></div>
-        <div id="tags">
-        <%= @article.tags.count %>
-          <%= @article.tags.each do |tag| %>
-            <span><%= tag.name %></span>
-          <% end %>
-        </div>
+        <% if @article.tags.any? %>
+          <div id="tags">
+          Tags:
+            <% @article.tags.each do |tag| %>
+              <span><%= link_to tag.name, articles_path(tag_search: tag.name) %></span>
+            <% end %>
+          </div>
+        <% end %>
       </small>
     </div>
   </h1>

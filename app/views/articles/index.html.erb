@@ -14,6 +14,11 @@
     </p>
   </div>
 </div>
+<% if @tag_name %>
+  <div class="row">
+    Viewing all articles tagged <%= @tag_name %>
+  </div>
+<% end %>
 
 <div class="row" id="articles">
 <% @articles.each do |article| %>

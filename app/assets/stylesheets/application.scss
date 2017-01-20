@@ -21,6 +21,11 @@
   @extend .btn;
   @extend .btn-sm;
   @extend .btn-info;
+  font-size: 14px;
+  
+  a {
+    color: white;
+  }
 
  }
 
