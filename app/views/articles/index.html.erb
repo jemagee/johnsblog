@@ -5,36 +5,35 @@
 </div>
 <div class="row">
   <div class="jumbotron">
-    <h3>Pardon the Dust</h3>
     <p>
-      Mageeworld is a website that is constantly growing and changing.  If some of the links up above don't work yet it's because I haven't had a chance to get to it, but I will, I promise
+      Mageeworld is a website that a consntatly evolving web site.  As my skills evolve, so will this web site.  If some of the links up above don't work yet it's because I haven't had the time to get to that functionality yet, but I will.
     </p>
     <p>
-      If you're curious as to why the site exists in an 'incomplete' state, please read <%= link_to "this article", article_path(1) %> (my first one) as explanation.
+      If you are curious as to why the site exists in this ever changing state, please read <%= link_to "this article", article_path(1) %> as explanation.
     </p>
   </div>
 </div>
-<% if @tag_name %>
-  <div class="row">
-    Viewing all articles tagged <%= @tag_name %>
-  </div>
-<% end %>
 
 <div class="row" id="articles">
-<% @articles.each do |article| %>
-	<div class="row">
-		<h4>
-      <%= link_to article.title,  article_path(article), class: "index_title" %><br />
-      <% if !article.published_on.nil? %>
+  <% if @tag_name %>
+    <div class="row">
+      <span id="tag-category">Viewing all articles tagged <%= @tag_name %></span>
+    </div>
+  <% end %>
+  <% @articles.each do |article| %>
+  	<div class="row">
+  		<h4>
+        <%= link_to article.title,  article_path(article), class: "index_title" %><br />
+        <% if !article.published_on.nil? %>
+          <small>
+            Published <%= time_ago_in_words(article.published_on) %> ago
+          </small>
+        <% end %>
+        <br />
         <small>
-          Published <%= time_ago_in_words(article.published_on) %> ago
+          Comments: <%= article.comments.count %>
         </small>
-      <% end %>
-      <br />
-      <small>
-        Comments: <%= article.comments.count %>
-      </small>
-    </h4>
-	</div>
-<% end %>
+      </h4>
+  	</div>
+  <% end %>
 </div>

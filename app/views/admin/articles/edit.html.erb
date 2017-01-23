@@ -1,2 +1,9 @@
 <h1>Article Status: <%= @article.status.upcase %></h1>
 <%= render 'form',  article: @article %>
+<% if @article.tags.any? %>
+  <div id="edit-tags">
+    <% @article.tags.each do |tag| %>
+      <span class="tag"><%= link_to tag.name, remove_admin_article_tag_path(@article, tag), method: :delete, remote: true, title: "delete", class: "remove" %></span>
+    <% end %>
+  </div>
+<% end %>

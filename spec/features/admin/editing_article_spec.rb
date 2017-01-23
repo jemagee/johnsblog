@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Editing an article" do
 
-	let(:article) { FactoryGirl.create(:article) }
+	let(:article) { FactoryGirl.create(:article, tag_names: "RSpec, Gems, Delete this tag") }
 
 	before do 
     login_as(FactoryGirl.create(:user, :admin))
@@ -30,6 +30,16 @@ RSpec.feature "Editing an article" do
 		expect(page).to have_content("Your article has not been altered")
 		expect(page).to have_content("Title can't be blank")
 		expect(page).to have_content(article.body)
+	end
+
+	scenario "Deleting a tag works via AJAX", js: true do
+
+		within tag("Delete this tag") do
+			click_link "delete"
+		end
+		expect(page).to have_content("RSpec")
+		expect(page).to have_content("Gems")
+		expect(page).to_not have_content("Delete this tag")
 	end
 
 end

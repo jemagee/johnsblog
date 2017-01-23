@@ -18,6 +18,11 @@ Rails.application.routes.draw do
       member do
         get 'publish'
       end
+      resources :tags, only: [] do
+        member do
+          delete :remove
+        end
+      end
     end
     resources :comments
   end

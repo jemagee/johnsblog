@@ -26,9 +26,39 @@
   a {
     color: white;
   }
-
  }
 
+#edit-tags {
+
+  margin-top: 10px;
+
+    span {
+      @extend .btn;
+      @extend .btn-sm;
+      @extend .btn-info;
+      font-size: 14px;
+  
+      a {
+        color: white;
+      }
+
+      &:before {
+        @extend .fa;
+        @extend .fa-trash;
+        padding-right: 2px;
+      }
+    }
+ }
+
+#tag-category {
+  @extend .lead;
+  font-weight: bold;
+  color: #DEDEDE;
+  background-color: black;
+  margin-left: 25px;
+  padding: 5px;
+  font-size: 24px;
+}
  #drafts div.draft {
   margin-left: 10pt;
   padding-top: 8pt;
