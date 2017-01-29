@@ -17,8 +17,8 @@
       <h3>10 Most Recent Comments</h3>
       <% @comments.each do |comment| %>
         <div class="admin-comment">
-          <%= comment.body %>
           <%= link_to "Delete Comment", admin_comment_path(comment), method: :delete %>
+          <%= comment.body %>
         </div>
       <% end %>
     </div>
