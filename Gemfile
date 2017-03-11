@@ -70,4 +70,5 @@ group :test do
   gem 'factory_girl_rails'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'database_cleaner', '~> 1.5', '>= 1.5.3'
+  gem 'email_spec'
 end
