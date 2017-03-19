@@ -1,4 +1,4 @@
-if Rails.env.test?
+if !Rails.env.test?
 	CarrierWave.configure do |config|
 	  config.dropbox_app_key = ENV["APP_KEY"]
 	  config.dropbox_app_secret = ENV["APP_SECRET"]
