@@ -3,14 +3,16 @@ class CommentsController < ApplicationController
   before_action :get_article
 
   def create
-    @comment = @article.comments.build(comment_params)
-    if @comment.save
-      flash[:success] = "Your comment has been created"
-      redirect_to @article
-    else
-      flash[:danger] = "Your comment has not been created"
-      redirect_to @article
-    end
+    # @comment = @article.comments.build(comment_params)
+    # if @comment.save
+    #   flash[:success] = "Your comment has been created"
+    #   redirect_to @article
+    # else
+    #   flash[:danger] = "Your comment has not been created"
+    #   redirect_to @article
+    # end
+    flash[:danger] = "Comments Are Not Available At This Time"
+    redirect_to @article
   end
 
   private
