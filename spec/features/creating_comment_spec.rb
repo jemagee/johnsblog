@@ -47,4 +47,14 @@ RSpec.feature "Creating a comment associated with a blog" do
     expect(page).to have_content("Espn Web Site")
     expect(page).to_not have_link('espn.go.com')
   end
+
+  scenario "If the hidden field is filled out, the comment won't be added" do
+    fill_in "comment_email", with: "abc@example.com"
+    fill_in "comment_body", with: "This is a new test comment"
+    click_button "Add Comment"
+
+    expect(page).to_not have_content("This is a new test comment")
+    expect(page).to have_content("Your comment has been created")
+    expect(current_path).to eq article_path(article)
+  end
 end

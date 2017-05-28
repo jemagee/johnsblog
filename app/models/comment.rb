@@ -1,5 +1,7 @@
 class Comment < ActiveRecord::Base
 
+	attr_accessor :email
+
   before_save :clean_comment
   belongs_to :article
   validates :body, presence: true

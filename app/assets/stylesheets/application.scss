@@ -17,6 +17,10 @@
  *= require_self
  */
 
+ #commenter_email {
+  display: none;
+ }
+
  #tags span {
   @extend .btn;
   @extend .btn-sm;
